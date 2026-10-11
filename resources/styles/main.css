@@ -1,0 +1,160 @@
+/* NetPulse stylesheet — one sheet for both themes.
+ * Palette: emerald accent (#10b981 / #059669), amber warn, red err, blue for
+ * informational values. No gradients, no glassmorphism, no oversized radii.
+ *
+ * Theming: GTK 4's built-in named colours (@theme_bg_color, @theme_base_color,
+ * @borders, @theme_selected_bg_color, ...) already switch with
+ * gtk-application-prefer-dark-theme, so this sheet uses them directly for every
+ * surface, border and foreground. There are deliberately no per-theme override
+ * sheets: a second stylesheet that re-declares a colour name invalidates the
+ * references already resolved by this one, which silently drops rules (the
+ * cards losing their borders). Semantic accents below are declared once here
+ * and never redefined, so they are safe.
+ */
+@define-color np_accent     #10b981;
+@define-color np_accent_dim #059669;
+@define-color np_warn       #f59e0b;
+@define-color np_danger     #ef4444;
+
+.np-sidebar {
+  background-color: @theme_bg_color;
+  border-right: 1px solid @borders;
+}
+
+.np-brand {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.np-nav row {
+  border-radius: 8px;
+  margin: 1px 8px;
+}
+
+.np-nav row:selected {
+  background-color: alpha(@theme_selected_bg_color, 0.16);
+}
+
+/* Collapsed sidebar: accent bar marks the active page when labels are hidden. */
+.np-nav-row:selected {
+  box-shadow: inset 3px 0 0 @theme_selected_bg_color;
+}
+
+.np-nav-row:hover {
+  background-color: alpha(@theme_fg_color, 0.06);
+}
+
+.np-nav-row:focus-visible {
+  outline: 2px solid @theme_selected_bg_color;
+  outline-offset: -2px;
+}
+
+.np-header-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.np-card {
+  border: 1px solid @borders;
+  border-radius: 10px;
+  background-color: @theme_base_color;
+}
+
+.np-card.ok { border-left: 3px solid #10b981; }
+.np-card.warn { border-left: 3px solid #c77700; }
+.np-card.err { border-left: 3px solid #b3261e; }
+.np-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  opacity: 0.65;
+}
+
+.np-card-value {
+  font-size: 21px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.np-card-subtitle {
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+.np-section {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.np-pill {
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Interfaces table: keep rows dense and let the name column absorb slack. */
+.np-table {
+  font-variant-numeric: tabular-nums;
+}
+
+.np-table header {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  opacity: 0.7;
+}
+
+.np-table header button {
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.np-table header button:hover {
+  background-color: alpha(@theme_fg_color, 0.06);
+}
+
+.np-tbl-ok   { color: #10b981; }
+.np-tbl-down { color: #9aa0aa; }
+
+.np-pill.ok    { background-color: #059669; color: white; }
+.np-pill.warn  { background-color: #9a6a00; color: white; }
+.np-pill.err   { background-color: #b3261e; color: white; }
+.np-pill.muted { background-color: alpha(@theme_fg_color, 0.12); color: @theme_fg_color; }
+
+.np-mono {
+  font-family: monospace;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.np-muted { opacity: 0.65; }
+.np-chart {
+  border: 1px solid @borders;
+  border-radius: 10px;
+  background-color: @theme_base_color;
+}
+
+.np-log-row {
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.np-row-ok   { color: #10b981; }
+.np-row-warn { color: #9a6a00; }
+.np-row-err  { color: #b3261e; }
+
+.np-toast {
+  background-color: @theme_tooltip_bg_color;
+  color: @theme_tooltip_fg_color;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.np-about-title {
+  font-size: 28px;
+  font-weight: 800;
+}

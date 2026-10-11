@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NetPulse application mark.
+
+  A rounded-square badge holding a traffic waveform: a flat baseline that
+  spikes twice (up/download then down/upload). It stays legible at 16 px
+  because the stroke is a constant 2 px inside a 32-unit grid, and it avoids
+  gradients per the design rules.
+
+  Colours are the app's emerald accent (#10b981) on a deep slate surface, so the
+  mark reads on both the dark and the light theme.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 32 32">
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="#0F172A"/>
+  <rect x="1.75" y="1.75" width="28.5" height="28.5" rx="7.25"
+        fill="none" stroke="#10b981" stroke-opacity="0.55" stroke-width="1.5"/>
+  <path d="M6 16h4.2l2.6-6.4 3.4 12.8 2.6-6.4H26"
+        fill="none" stroke="#10b981" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
